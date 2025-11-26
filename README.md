@@ -1,13 +1,13 @@
 # MLOps Image Classification Project
 
-## 🎯 Project Overview
+## Project Overview
 
 This project demonstrates a complete end-to-end Machine Learning Operations (MLOps) pipeline for image classification using the CIFAR-10 dataset. The system includes model training, deployment, monitoring, and automated retraining capabilities with a user-friendly web interface.
 
-### 📹 Demo Video
+### Demo Video
 **YouTube Link:** [Insert Your Demo Video Link Here]
 
-### 🌐 Live Deployment
+### Live Deployment
 **URL:** [Insert Your Deployment URL Here]
 
 **Quick Deploy to Render**: See **RENDER_QUICK_START.md** for 20-minute deployment guide!
@@ -15,20 +15,20 @@ This project demonstrates a complete end-to-end Machine Learning Operations (MLO
 ## 📊 Dataset
 
 **CIFAR-10 Dataset** - 60,000 32x32 color images in 10 classes:
-- ✈️ Airplane
-- 🚗 Automobile  
-- 🐦 Bird
-- 🐱 Cat
-- 🦌 Deer
-- 🐕 Dog
-- 🐸 Frog
-- 🐴 Horse
-- 🚢 Ship
-- 🚚 Truck
+- Airplane
+- Automobile  
+- Bird
+- Cat
+- Deer
+- Dog
+- Frog
+- Horse
+- Ship
+- Truck
 
 **Split:** 50,000 training images | 10,000 test images
 
-## 🏗️ Architecture
+## Architecture
 
 ### System Components
 1. **Data Processing Pipeline** - Automated data acquisition and preprocessing
@@ -38,7 +38,7 @@ This project demonstrates a complete end-to-end Machine Learning Operations (MLO
 5. **Docker Containers** - Containerized deployment with load balancing
 6. **Load Testing** - Locust-based performance testing
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 MLOps_Image_Classification/
@@ -214,14 +214,14 @@ locust -f locustfile.py --host=http://localhost:5000 --users 100 --spawn-rate 50
 3. **Reliability:** Failure rate decreased from 8.3% to 0.5% with load balancing
 4. **Throughput:** 3x improvement in requests/second with 3 containers
 
-## 🎯 Features
+## Features
 
-### ✅ Model Prediction
+### Model Prediction
 - Single image classification with confidence scores
 - Batch prediction for multiple images
 - Real-time prediction with <100ms latency (typical)
 
-### ✅ Data Visualizations
+### Data Visualizations
 - Class distribution analysis
 - Sample images from each category
 - Pixel intensity distributions
@@ -230,21 +230,21 @@ locust -f locustfile.py --host=http://localhost:5000 --users 100 --spawn-rate 50
 - ROC curves per class
 - Per-class performance metrics
 
-### ✅ Model Monitoring
+### Model Monitoring
 - Real-time uptime tracking
 - Prediction statistics
 - Average confidence scores
 - Response time monitoring
 - Health check endpoint
 
-### ✅ Upload & Retrain
+### Upload & Retrain
 - Bulk image upload for retraining
 - One-click model retraining trigger
 - Background retraining process
 - Status monitoring for retraining progress
 - Automatic model versioning
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -261,7 +261,7 @@ locust -f locustfile.py --host=http://localhost:5000 --users 100 --spawn-rate 50
 | GET | `/api/retrain/status` | Retraining status |
 | POST | `/api/model/evaluate` | Evaluate model |
 
-## 🧠 Model Performance
+## Model Performance
 
 ### Evaluation Metrics
 - **Accuracy:** ~85-87% (test set)
@@ -280,7 +280,7 @@ locust -f locustfile.py --host=http://localhost:5000 --users 100 --spawn-rate 50
 2. Dog: 79% accuracy
 3. Bird: 80% accuracy
 
-## 🚀 Cloud Deployment
+## Cloud Deployment
 
 ### AWS Deployment
 ```bash
@@ -306,7 +306,7 @@ az acr build --registry mlclassification --image ml-image-classification:latest 
 az container create --resource-group myResourceGroup --name ml-api --image mlclassification.azurecr.io/ml-image-classification:latest --dns-name-label ml-classifier
 ```
 
-## 🔧 Model Retraining
+## Model Retraining
 
 ### Automatic Retraining Trigger
 The model automatically suggests retraining when:
@@ -321,7 +321,7 @@ The model automatically suggests retraining when:
 4. Model automatically updates upon completion
 5. Zero-downtime deployment
 
-## 📈 Performance Optimization
+## Performance Optimization
 
 ### Recommendations
 1. **GPU Acceleration:** Use GPU for 10-20x faster inference
@@ -330,7 +330,7 @@ The model automatically suggests retraining when:
 4. **Batch Processing:** Group predictions for better throughput
 5. **Auto-scaling:** Configure based on CPU/memory metrics
 
-## 🛠️ Development
+## Development
 
 ### Run Tests
 ```bash
@@ -356,26 +356,11 @@ mypy src/
 black src/ app.py
 ```
 
-## 📝 License
-MIT License - See LICENSE file for details
-
-## 👥 Contributors
-[Your Name] - [Your Email]
-
-## 🙏 Acknowledgments
+## Acknowledgments
 - CIFAR-10 dataset by Alex Krizhevsky
 - TensorFlow and Keras teams
 - Flask framework
 - Locust load testing tool
 
-## 📞 Support
-For issues and questions:
-- GitHub Issues: [Your Repo Issues URL]
-- Email: [Your Email]
-- Documentation: [Your Docs URL]
-
-## 🔄 Version History
+## Version History
 - **v1.0.0** (2025-11-20): Initial release with full MLOps pipeline
-
----
-**Built with ❤️ for MLOps Excellence**
