@@ -104,33 +104,31 @@ git push -u origin main
 
 ## Step 4: Set Environment Variables (Important!)
 
+⚠️ **SEE: RENDER_ENV_QUICK_REFERENCE.md for complete list of variables to add**
+
 ### 4.1 Add Secrets in Render Dashboard
 
 1. **Service Dashboard** → Scroll to **"Environment"**
-2. **Click "Add Secret File"** or **"Add Secret"**
+2. **Click "Add Environment Variable"** for each variable
 
-3. **Add these variables:**
+3. **Add MINIMUM required variables:**
 
 ```
 FLASK_ENV=production
-FLASK_SECRET_KEY=your-secret-key-here-change-this-value
-MODEL_DIR=models
-UPLOAD_FOLDER=uploads
-MAX_CONTENT_LENGTH=16777216
-ALLOWED_EXTENSIONS=png,jpg,jpeg
-RATE_LIMIT_ENABLED=True
+FLASK_SECRET_KEY=<generate-a-random-string>
+FLASK_DEBUG=False
 LOG_LEVEL=INFO
+RATE_LIMIT_ENABLED=True
 ```
 
-4. **Important**: Generate a random secret key:
-   ```bash
-   # PowerShell
-   -join ((48..57) + (65..90) + (97..122) | Get-Random -Count 32 | ForEach-Object {[char]$_})
+4. **Generate FLASK_SECRET_KEY:**
    
-   # Or use this online: https://randomkeygen.com/
-   ```
+   See **RENDER_ENV_QUICK_REFERENCE.md** for ways to generate:
+   - PowerShell command
+   - Online: https://randomkeygen.com/
+   - Python script
 
-5. **Copy the generated key into FLASK_SECRET_KEY**
+5. **For complete list of optional variables, see RENDER_ENV_QUICK_REFERENCE.md**
 
 6. **Click "Save"** → Render will restart the service
 
