@@ -1,0 +1,13 @@
+Method,Name,Error,Occurrences
+POST,/api/predict [POST],CatchResponseError('Rate limit exceeded'),317
+POST,/api/predict [INTENSIVE],HTTPError('429 Client Error: TOO MANY REQUESTS for url: /api/predict [INTENSIVE]'),955
+GET,/ [GET] Dashboard,CatchResponseError('Got status code 429'),10
+POST,/api/predict [BURST],HTTPError('500 Server Error: INTERNAL SERVER ERROR for url: /api/predict [BURST]'),18
+POST,/api/predict/batch [POST],CatchResponseError('Got status code 500'),7
+POST,/api/predict [INTENSIVE],HTTPError('500 Server Error: INTERNAL SERVER ERROR for url: /api/predict [INTENSIVE]'),25
+POST,/api/predict/batch [POST],CatchResponseError('Rate limit exceeded'),442
+GET,/api/statistics [GET],CatchResponseError('Got status code 429'),60
+POST,/api/predict [POST],CatchResponseError('Got status code 500'),6
+GET,/api/model/uptime [GET],CatchResponseError('Got status code 429'),108
+GET,/api/health [GET],CatchResponseError('Got status code 429'),3
+POST,/api/predict [BURST],HTTPError('429 Client Error: TOO MANY REQUESTS for url: /api/predict [BURST]'),867
