@@ -1,5 +1,5 @@
-MLOps Image Classification Project
-🎯 Project Overview
+# MLOps Image Classification Project
+# Project Overview
 This project demonstrates a complete end-to-end Machine Learning Operations (MLOps) pipeline for image classification using the CIFAR-10 dataset. The system includes model training, deployment, monitoring, and automated retraining capabilities with a user-friendly web interface.
 
 📹 Demo Video
