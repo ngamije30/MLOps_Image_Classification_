@@ -280,31 +280,13 @@ locust -f locustfile.py --host=http://localhost:5000 --users 100 --spawn-rate 50
 2. Dog: 79% accuracy
 3. Bird: 80% accuracy
 
-## Cloud Deployment
+### Live Deployment
+**URL:** https://mlops-image-classification-mwhq.onrender.com
 
-### AWS Deployment
-```bash
-# Using AWS ECS with ECR
-aws ecr create-repository --repository-name ml-image-classification
-docker tag ml-image-classification:latest <account-id>.dkr.ecr.<region>.amazonaws.com/ml-image-classification:latest
-aws ecr get-login-password | docker login --username AWS --password-stdin <account-id>.dkr.ecr.<region>.amazonaws.com
-docker push <account-id>.dkr.ecr.<region>.amazonaws.com/ml-image-classification:latest
-```
-
-### Google Cloud Deployment
-```bash
-# Using Google Cloud Run
-gcloud builds submit --tag gcr.io/<project-id>/ml-image-classification
-gcloud run deploy ml-api --image gcr.io/<project-id>/ml-image-classification --platform managed
-```
-
-### Azure Deployment
-```bash
-# Using Azure Container Instances
-az acr create --resource-group myResourceGroup --name mlclassification --sku Basic
-az acr build --registry mlclassification --image ml-image-classification:latest .
-az container create --resource-group myResourceGroup --name ml-api --image mlclassification.azurecr.io/ml-image-classification:latest --dns-name-label ml-classifier
-```
+### Quick Links
+- Dashboard: https://mlops-image-classification-mwhq.onrender.com
+- API Health: https://mlops-image-classification-mwhq.onrender.com/api/health
+- Model Info: https://mlops-image-classification-mwhq.onrender.com/api/model/info
 
 ## Model Retraining
 
