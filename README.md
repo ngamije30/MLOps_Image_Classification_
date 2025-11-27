@@ -12,6 +12,8 @@ This project implements a production-ready image classification system with:
 - **Cloud Deployment**: Live on Render.com with auto-deploy
 
 **Live Demo**: https://mlops-image-classification-mwhq.onrender.com
+**Youtube video demo**: https://youtu.be/PyJzKoPtxZg
+**Gith repo**: https://github.com/ngamije30/MLOps_Image_Classification_.git
 
 ## Model Performance
 
