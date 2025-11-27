@@ -77,11 +77,18 @@ class DataPreprocessor:
         if image.shape != self.input_shape:
             raise ValueError(f"Image must have shape {self.input_shape}, got {image.shape}")
         
-        # Normalize
-        image_normalized = self.normalize_images(image)
+        # Check if already normalized (values between 0 and 1)
+        if image.max() > 1.0:
+            # Normalize if not already normalized
+            image_normalized = self.normalize_images(image)
+        else:
+            image_normalized = image
         
-        # Add batch dimension
-        image_batch = np.expand_dims(image_normalized, axis=0)
+        # Add batch dimension if not present
+        if len(image_normalized.shape) == 3:
+            image_batch = np.expand_dims(image_normalized, axis=0)
+        else:
+            image_batch = image_normalized
         
         return image_batch
     
@@ -119,14 +126,20 @@ class DataPreprocessor:
         if img.mode != 'RGB':
             img = img.convert('RGB')
         
-        # Resize to 32x32
+        # Resize to 32x32 using high-quality resampling
+        # Use LANCZOS for better quality when downsampling
         img = img.resize((32, 32), Image.Resampling.LANCZOS)
         
         # Convert to numpy array
-        img_array = np.array(img)
+        img_array = np.array(img, dtype=np.float32)
         
-        # Preprocess
-        return self.preprocess_single_image(img_array)
+        # Normalize to [0, 1] range immediately
+        img_array = img_array / 255.0
+        
+        # Add batch dimension
+        img_array = np.expand_dims(img_array, axis=0)
+        
+        return img_array
     
     def save_preprocessed_data(self, data, filepath):
         """

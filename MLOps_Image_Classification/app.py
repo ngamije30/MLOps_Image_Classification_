@@ -440,7 +440,7 @@ def retrain_model_background(X_train, y_train, X_val, y_val):
 
 
 @app.route('/api/retrain', methods=['POST'])
-@limiter.limit("1 per hour") if limiter else lambda f: f
+@limiter.limit("10 per hour") if limiter else lambda f: f
 def trigger_retraining():
     """Trigger model retraining."""
     global is_retraining

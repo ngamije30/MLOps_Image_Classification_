@@ -45,6 +45,10 @@ class ImagePredictor:
         if len(image.shape) == 3:
             image = np.expand_dims(image, axis=0)
         
+        # Ensure image is normalized (values between 0 and 1)
+        if image.max() > 1.0:
+            image = image.astype('float32') / 255.0
+        
         # Make prediction
         start_time = datetime.now()
         predictions = self.model.predict(image, verbose=0)
@@ -307,8 +311,29 @@ class ImagePredictor:
         if self.persistence_file and self.prediction_history:
             try:
                 os.makedirs(os.path.dirname(self.persistence_file), exist_ok=True)
+                
+                # Convert any non-serializable objects to strings
+                serializable_history = []
+                for pred in self.prediction_history:
+                    try:
+                        # Create a copy and ensure all values are JSON serializable
+                        safe_pred = {}
+                        for key, value in pred.items():
+                            if isinstance(value, (int, float, str, bool, type(None))):
+                                safe_pred[key] = value
+                            elif isinstance(value, dict):
+                                safe_pred[key] = {k: float(v) if isinstance(v, (np.floating, np.integer)) else v 
+                                                 for k, v in value.items()}
+                            else:
+                                safe_pred[key] = str(value)
+                        serializable_history.append(safe_pred)
+                    except Exception as e:
+                        print(f"Warning: Skipping non-serializable prediction: {str(e)}")
+                        continue
+                
                 with open(self.persistence_file, 'w') as f:
-                    json.dump(self.prediction_history, f, indent=2)
+                    json.dump(serializable_history, f, indent=2)
+                    
             except Exception as e:
                 print(f"Warning: Could not save predictions to persistence: {str(e)}")
     
@@ -317,10 +342,26 @@ class ImagePredictor:
         if self.persistence_file and os.path.exists(self.persistence_file):
             try:
                 with open(self.persistence_file, 'r') as f:
-                    self.prediction_history = json.load(f)
-                print(f"Loaded {len(self.prediction_history)} predictions from persistence")
+                    content = f.read()
+                    if content.strip():  # Check if file is not empty
+                        self.prediction_history = json.loads(content)
+                        print(f"Loaded {len(self.prediction_history)} predictions from persistence")
+                    else:
+                        print("Persistence file is empty, starting fresh")
+                        self.prediction_history = []
+            except json.JSONDecodeError as e:
+                print(f"Warning: Corrupted persistence file, starting fresh: {str(e)}")
+                self.prediction_history = []
+                # Backup corrupted file
+                backup_path = f"{self.persistence_file}.backup"
+                try:
+                    os.rename(self.persistence_file, backup_path)
+                    print(f"Backed up corrupted file to: {backup_path}")
+                except:
+                    pass
             except Exception as e:
                 print(f"Warning: Could not load predictions from persistence: {str(e)}")
+                self.prediction_history = []
 
 
 def visualize_prediction(image, prediction_result, save_path=None):
