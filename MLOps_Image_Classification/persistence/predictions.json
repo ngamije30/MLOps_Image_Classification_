@@ -124,5 +124,47 @@
     },
     "file_path": "C:\\Users\\ngami\\MLOps_Image_Classification_\\MLOps_Image_Classification\\uploads\\ed7a-how-to-buy-a-puppy-article-dog.png",
     "file_name": "ed7a-how-to-buy-a-puppy-article-dog.png"
+  },
+  {
+    "predicted_class": "Airplane",
+    "predicted_class_index": 0,
+    "confidence": 0.9999576807022095,
+    "prediction_time_ms": 483.708,
+    "timestamp": "2025-11-27T16:29:01.266642",
+    "all_probabilities": {
+      "Airplane": 0.9999576807022095,
+      "Automobile": 3.916991602181952e-07,
+      "Bird": 3.448405914241448e-05,
+      "Cat": 6.773216796318593e-07,
+      "Deer": 7.22245374618069e-07,
+      "Dog": 2.0772850461980852e-07,
+      "Frog": 4.2483074480514915e-07,
+      "Horse": 4.0833916159499495e-07,
+      "Ship": 2.2158087631396484e-06,
+      "Truck": 2.761348014246323e-06
+    },
+    "file_path": "C:\\Users\\ngami\\MLOps_Image_Classification_\\MLOps_Image_Classification\\uploads\\gettyimages-1798755354.jpg",
+    "file_name": "gettyimages-1798755354.jpg"
+  },
+  {
+    "predicted_class": "Dog",
+    "predicted_class_index": 5,
+    "confidence": 0.7453271150588989,
+    "prediction_time_ms": 131.654,
+    "timestamp": "2025-11-27T16:29:08.665077",
+    "all_probabilities": {
+      "Airplane": 0.0003647972771432251,
+      "Automobile": 0.00043236816418357193,
+      "Bird": 0.007131755817681551,
+      "Cat": 0.06520044803619385,
+      "Deer": 0.14074654877185822,
+      "Dog": 0.7453271150588989,
+      "Frog": 0.007805164437741041,
+      "Horse": 0.03222358971834183,
+      "Ship": 0.0005050983163528144,
+      "Truck": 0.0002631652751006186
+    },
+    "file_path": "C:\\Users\\ngami\\MLOps_Image_Classification_\\MLOps_Image_Classification\\uploads\\ed7a-how-to-buy-a-puppy-article-dog.png",
+    "file_name": "ed7a-how-to-buy-a-puppy-article-dog.png"
   }
 ]
