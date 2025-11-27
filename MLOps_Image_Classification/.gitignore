@@ -32,6 +32,8 @@ ENV/
 
 # Model files (large)
 models/*.h5
+models/*.keras
+models/*.backup
 models/cifar10_cnn_model/
 *.pkl
 *.pb
