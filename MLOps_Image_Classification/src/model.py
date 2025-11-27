@@ -80,7 +80,7 @@ class ImageClassificationModel:
         return model
     
     def train_model(self, X_train, y_train, X_val, y_val, 
-                   epochs=50, batch_size=64, callbacks=None):
+                   epochs=15, batch_size=64, callbacks=None):
         """
         Train the model.
         

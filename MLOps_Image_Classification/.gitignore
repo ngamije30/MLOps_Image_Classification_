@@ -31,8 +31,9 @@ ENV/
 *.ipynb_checkpoints
 
 # Model files (large)
-models/*.h5
-models/*.keras
+# Allow trained model files to be committed for deployment
+# models/*.h5
+# models/*.keras
 models/*.backup
 models/cifar10_cnn_model/
 *.pkl

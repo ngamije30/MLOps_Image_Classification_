@@ -113,29 +113,9 @@ def load_model_on_startup():
             model_classifier = load_latest_model(app.config['MODEL_DIR'])
             app.logger.info("✅ Existing model loaded successfully!")
         except FileNotFoundError:
-            app.logger.warning("⚠️ No existing model found. Creating and training new model...")
-            model_classifier = ImageClassificationModel()
-            model_classifier.create_cnn_model()
-            app.logger.info("✅ Model architecture created. Starting training...")
-            
-            # Load and prepare training data
-            data = preprocessor.prepare_training_data()
-            
-            # Train the model
-            app.logger.info(f"🏋️ Training model for {app.config['DEFAULT_EPOCHS']} epochs...")
-            model_classifier.train_model(
-                data['X_train'], 
-                data['y_train'],
-                data['X_test'], 
-                data['y_test'],
-                epochs=app.config['DEFAULT_EPOCHS'],
-                batch_size=app.config['DEFAULT_BATCH_SIZE']
-            )
-            
-            # Save the trained model
-            model_path = os.path.join(app.config['MODEL_DIR'], 'cifar10_cnn_model.h5')
-            model_classifier.save_model(model_path)
-            app.logger.info(f"✅ Model trained and saved to {model_path}!")
+            app.logger.error("❌ No model found! Please train model locally first.")
+            app.logger.error("Run: python train_model_locally.py")
+            raise FileNotFoundError("Model not found. Train model locally and commit to repository.")
         
         # Initialize predictor with persistence
         predictor = ImagePredictor(
