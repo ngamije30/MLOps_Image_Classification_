@@ -47,9 +47,9 @@ class Config:
     )
     
     # Model Training Configuration
-    DEFAULT_EPOCHS = int(os.getenv('DEFAULT_EPOCHS', 50))
+    DEFAULT_EPOCHS = int(os.getenv('DEFAULT_EPOCHS', 15))
     DEFAULT_BATCH_SIZE = int(os.getenv('DEFAULT_BATCH_SIZE', 64))
-    RETRAINING_EPOCHS = int(os.getenv('RETRAINING_EPOCHS', 20))
+    RETRAINING_EPOCHS = int(os.getenv('RETRAINING_EPOCHS', 15))
     RETRAINING_BATCH_SIZE = int(os.getenv('RETRAINING_BATCH_SIZE', 64))
     
     # Monitoring Configuration
